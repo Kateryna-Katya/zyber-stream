@@ -37,123 +37,235 @@
   </div>
 </section>
 <section class="about section-padding" id="practices">
-  <div class="container about__container">
+  <div class="about__mesh-bg" id="mesh-trigger">
+      <div class="mesh-spotlight" id="mesh-spotlight"></div>
+      <svg class="mesh-svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+              <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(37, 99, 235, 0.05)" stroke-width="1"/>
+              </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+      </svg>
+  </div>
 
-      <div class="about__blob-wrapper">
-          <svg viewBox="0 0 500 500" class="morph-svg">
-              <path class="morph-path" d="M410,250Q380,350,250,380Q120,410,100,250Q80,90,250,110Q420,130,410,250Z" />
-          </svg>
+  <div class="container about__container">
+      <div class="about__visual fade-in">
+          <div class="glass-stack">
+              <div class="glass-layer layer-1">
+                  <div class="glass-layer__content">
+                      <i data-lucide="brain-circuit"></i>
+                      <span>Анализ данных</span>
+                  </div>
+              </div>
+              <div class="glass-layer layer-2">
+                  <div class="glass-layer__content">
+                      <i data-lucide="layout"></i>
+                      <span>Генерация идей</span>
+                  </div>
+              </div>
+              <div class="glass-layer layer-3">
+                  <div class="glass-layer__content">
+                      <i data-lucide="rocket"></i>
+                      <span>Автоматизация</span>
+                  </div>
+              </div>
+          </div>
       </div>
 
       <div class="about__content fade-in">
-          <div class="badge">Практики, применимые уже сегодня</div>
-          <h2 class="section-title">Легко разобраться <br><span class="text-gradient">без опыта</span></h2>
+          <div class="badge">Практики нового поколения</div>
+          <h2 class="section-title">Технологии, которые <br><span class="text-gradient">работают на вас</span></h2>
           <p class="section-desc">
-              Платформа уже доступна в Европе и предлагает проверенные методологии. Мы превращаем сложные алгоритмы в простые пошаговые инструкции для вашей повседневной жизни.
+              Платформа уже доступна в Европе. Мы не просто даем доступ к инструментам, мы встраиваем их в вашу повседневную логику, делая жизнь проще и продуктивнее.
           </p>
 
-          <div class="about__grid">
-              <div class="about__card">
-                  <div class="about__card-icon"><i data-lucide="zap"></i></div>
-                  <h3>Быстрый старт</h3>
-                  <p>Подключение занимает 2 минуты. Начните использовать ИИ сразу после регистрации.</p>
+          <div class="about__features">
+              <div class="feature-item">
+                  <div class="feature-item__icon"><i data-lucide="check"></i></div>
+                  <div class="feature-item__text">
+                      <strong>Пошаговый путь</strong>
+                      <p>Инструкции, понятные каждому, без лишней терминологии.</p>
+                  </div>
               </div>
-              <div class="about__card">
-                  <div class="about__card-icon"><i data-lucide="shield-check"></i></div>
-                  <h3>Проверенный партнер</h3>
-                  <p>Экспертная поддержка на всех этапах вашего погружения в цифровое будущее.</p>
+              <div class="feature-item">
+                  <div class="feature-item__icon"><i data-lucide="check"></i></div>
+                  <div class="feature-item__text">
+                      <strong>Адаптация в ЕС</strong>
+                      <p>Решения, соответствующие стандартам и потребностям жителей Франции.</p>
+                  </div>
               </div>
           </div>
-      </div>
 
+          <a href="#contact" class="btn btn--primary">Получить больше информации</a>
+      </div>
   </div>
 </section>
 <section class="benefits section-padding" id="benefits">
-  <div class="benefits__bg-overlay"></div>
-
-  <div class="container relative">
+  <div class="container">
       <div class="benefits__header fade-in">
-          <div class="badge">Решения, которые меняют правила игры</div>
+          <div class="badge">Решения, меняющие правила игры</div>
           <h2 class="section-title">Ваша стратегия роста на <br>базе <span class="text-gradient">инноваций</span></h2>
       </div>
 
-      <div class="benefits__grid">
-          <div class="benefit-card fade-in" data-color="#e0f2fe">
-              <div class="benefit-card__icon"><i data-lucide="trending-up"></i></div>
-              <h3 class="benefit-card__title">Технология нового поколения</h3>
-              <p class="benefit-card__text">Оцените перспективы проекта с помощью алгоритмов, которые анализируют рынок за секунды.</p>
-              <div class="benefit-card__footer">Платформа года</div>
+      <div class="bento-grid">
+          <div class="bento-card bento-card--large fade-in">
+              <div class="bento-card__content">
+                  <div class="bento-card__icon"><i data-lucide="trending-up"></i></div>
+                  <h3 class="bento-card__title">Технология нового поколения</h3>
+                  <p class="bento-card__text">Оцените перспективы проекта с помощью алгоритмов, которые анализируют рынок за секунды. Платформа года уже доступна в Европе.</p>
+              </div>
+              <div class="bento-card__visual">
+                  <svg viewBox="0 0 200 100" class="chart-svg">
+                      <path d="M0,80 Q50,20 100,50 T200,10" fill="none" stroke="var(--color-primary)" stroke-width="3" class="path-anim"/>
+                  </svg>
+              </div>
           </div>
 
-          <div class="benefit-card fade-in" data-color="#f0fdf4">
-              <div class="benefit-card__icon"><i data-lucide="pie-chart"></i></div>
-              <h3 class="benefit-card__title">Пассивный доход</h3>
-              <p class="benefit-card__text">Программа пассивного дохода через автоматизацию рутинных процессов вашего бизнеса.</p>
-              <div class="benefit-card__footer">Инновационная структура</div>
+          <div class="bento-card bento-card--medium fade-in">
+              <div class="bento-card__icon"><i data-lucide="pie-chart"></i></div>
+              <h3 class="bento-card__title">Пассивный доход</h3>
+              <p class="bento-card__text">Программа автоматизации рутинных процессов вашего бизнеса для стабильного роста.</p>
           </div>
 
-          <div class="benefit-card fade-in" data-color="#fef2f2">
-              <div class="benefit-card__icon"><i data-lucide="layers"></i></div>
-              <h3 class="benefit-card__title">Передовая инфраструктура</h3>
-              <p class="benefit-card__text">Расширьте горизонты проекта, используя облачные вычисления и децентрализованный ИИ.</p>
-              <div class="benefit-card__footer">Доступ открыт</div>
+          <div class="bento-card bento-card--small fade-in">
+              <div class="bento-card__icon"><i data-lucide="layers"></i></div>
+              <h3 class="bento-card__title">Инфраструктура</h3>
+              <p class="bento-card__text">Децентрализованный ИИ для ваших задач.</p>
           </div>
 
-          <div class="benefit-card fade-in" data-color="#faf5ff">
-              <div class="benefit-card__icon"><i data-lucide="users"></i></div>
-              <h3 class="benefit-card__title">Экспертная поддержка</h3>
-              <p class="benefit-card__text">Методологии, доказавшие эффективность. Помощь по всем вопросам на каждом этапе.</p>
-              <div class="benefit-card__footer">Проверенный партнер</div>
+          <div class="bento-card bento-card--wide fade-in">
+              <div class="bento-card__content">
+                  <div class="bento-card__icon"><i data-lucide="users"></i></div>
+                  <div class="bento-card__info">
+                      <h3 class="bento-card__title">Экспертная поддержка</h3>
+                      <p class="bento-card__text">Методологии, доказавшие эффективность. Поддержка во Франции по номеру <br> <strong>+33 1 89 48 00 58</strong></p>
+                  </div>
+              </div>
           </div>
       </div>
   </div>
 </section>
-<section class="innovations section-padding" id="tools">
+<section class="tools section-padding" id="tools">
   <div class="container">
-      <div class="innovations__header fade-in">
-          <div class="badge">Пошаговый путь, понятный каждому</div>
-          <h2 class="section-title">Как меняется ваша жизнь <br>с <span class="text-gradient">Zyber-Stream</span></h2>
+      <div class="tools__header fade-in">
+          <div class="badge">Инновационная цифровая инфраструктура</div>
+          <h2 class="section-title">Лучшие ИИ-инструменты <br>для <span class="text-gradient">вашего стека</span></h2>
+          <p class="section-desc">Мы отобрали 6 ключевых технологий, которые переосмыслят ваш подход к работе и развитию в 2026 году.</p>
       </div>
 
-      <div class="innovation-path">
-          <div class="innovation-path__line">
-              <div class="innovation-path__progress"></div>
+      <div class="tools__grid">
+          <div class="tool-card fade-in">
+              <div class="tool-card__icon"><i data-lucide="message-square"></i></div>
+              <h3 class="tool-card__title">Генерация смыслов</h3>
+              <p class="tool-card__text">Работа с продвинутыми текстовыми моделями для написания кода, писем и стратегий.</p>
+              <div class="tool-card__footer">Level: Expert</div>
           </div>
 
-          <div class="path-step fade-in">
-              <div class="path-step__number">01</div>
-              <div class="path-step__content">
-                  <h3 class="path-step__title">Погружение без стресса</h3>
-                  <p class="path-step__text">Знакомство с базовыми ИИ-инструментами. Вы учитесь формулировать задачи так, чтобы технология понимала вас с полуслова.</p>
-                  <span class="path-step__tag">Доступно в ЕС</span>
-              </div>
+          <div class="tool-card fade-in">
+              <div class="tool-card__icon"><i data-lucide="palette"></i></div>
+              <h3 class="tool-card__title">Визуальный контент</h3>
+              <p class="tool-card__text">Создание фотореалистичных изображений и графики для бизнеса за считанные секунды.</p>
+              <div class="tool-card__footer">Level: Middle</div>
           </div>
 
-          <div class="path-step fade-in">
-              <div class="path-step__number">02</div>
-              <div class="path-step__content">
-                  <h3 class="path-step__title">Автоматизация быта</h3>
-                  <p class="path-step__text">Интеграция ИИ в ежедневные задачи: от планирования меню и поездок до умной сортировки почты. Освобождаем до 5 часов в неделю.</p>
-                  <span class="path-step__tag">Практики года</span>
-              </div>
+          <div class="tool-card fade-in">
+              <div class="tool-card__icon"><i data-lucide="bar-chart-4"></i></div>
+              <h3 class="tool-card__title">Анализ данных</h3>
+              <p class="tool-card__text">ИИ-ассистенты для обработки таблиц, прогнозирования прибыли и поиска инсайтов.</p>
+              <div class="tool-card__footer">Level: Pro</div>
           </div>
 
-          <div class="path-step fade-in">
-              <div class="path-step__number">03</div>
-              <div class="path-step__content">
-                  <h3 class="path-step__title">Профессиональный рывок</h3>
-                  <p class="path-step__text">Использование нейросетей для работы: генерация контента, анализ данных и создание стратегий роста. Постройте карьеру на базе инноваций.</p>
-                  <span class="path-step__tag">Бизнес-инструменты</span>
-              </div>
+          <div class="tool-card fade-in">
+              <div class="tool-card__icon"><i data-lucide="video"></i></div>
+              <h3 class="tool-card__title">Видео-продакшн</h3>
+              <p class="tool-card__text">Генерация видеороликов и аватаров для обучения и презентаций без камеры.</p>
+              <div class="tool-card__footer">Level: Middle</div>
           </div>
 
-          <div class="path-step fade-in">
-              <div class="path-step__number">04</div>
-              <div class="path-step__content">
-                  <h3 class="path-step__title">Новые горизонты</h3>
-                  <p class="path-step__text">Создание собственных мини-сервисов на базе ИИ и выход на пассивный доход. Вы больше не просто пользователь, вы — создатель.</p>
-                  <span class="path-step__tag">Мастерство</span>
+          <div class="tool-card fade-in">
+              <div class="tool-card__icon"><i data-lucide="code-2"></i></div>
+              <h3 class="tool-card__title">No-code разработка</h3>
+              <p class="tool-card__text">Сборка веб-сервисов и приложений с помощью ИИ без навыков программирования.</p>
+              <div class="tool-card__footer">Level: Expert</div>
+          </div>
+
+          <div class="tool-card fade-in">
+              <div class="tool-card__icon"><i data-lucide="headphones"></i></div>
+              <h3 class="tool-card__title">Аудио и перевод</h3>
+              <p class="tool-card__text">Клонирование голоса и мгновенный перевод контента на любые европейские языки.</p>
+              <div class="tool-card__footer">Level: Beginner</div>
+          </div>
+      </div>
+  </div>
+</section>
+<section class="learning section-padding" id="learning">
+  <div class="container">
+      <div class="learning__header fade-in">
+          <div class="badge">Постройте карьеру, которая работает на вас</div>
+          <h2 class="section-title">Ваш пошаговый путь <br>к <span class="text-gradient">мастерству ИИ</span></h2>
+          <p class="section-desc">Образовательные программы, адаптированные под европейский рынок и требования 2026 года.</p>
+      </div>
+
+      <div class="learning__grid">
+          <div class="course-card fade-in">
+              <div class="course-card__level">Level: Beginner</div>
+              <h3 class="course-card__title">ИИ-Грамотность: Быстрый старт</h3>
+              <ul class="course-card__list">
+                  <li><i data-lucide="check-circle-2"></i> Основы работы с LLM (ChatGPT, Claude)</li>
+                  <li><i data-lucide="check-circle-2"></i> Безопасность и этика использования в ЕС</li>
+                  <li><i data-lucide="check-circle-2"></i> Автоматизация личного расписания</li>
+              </ul>
+              <div class="course-card__info">
+                  <span><i data-lucide="clock"></i> 2 недели</span>
+                  <span><i data-lucide="users"></i> 1.2k+ студентов</span>
               </div>
+              <a href="#contact" class="btn btn--outline btn--full">Запросить доступ</a>
+          </div>
+
+          <div class="course-card course-card--featured fade-in">
+              <div class="course-card__level">Level: Middle</div>
+              <h3 class="course-card__title">Промпт-инжиниринг для профи</h3>
+              <ul class="course-card__list">
+                  <li><i data-lucide="check-circle-2"></i> Сложные многошаговые цепочки (Chaining)</li>
+                  <li><i data-lucide="check-circle-2"></i> Создание визуального контента (Midjourney)</li>
+                  <li><i data-lucide="check-circle-2"></i> ИИ как личный бизнес-аналитик</li>
+              </ul>
+              <div class="course-card__info">
+                  <span><i data-lucide="clock"></i> 4 недели</span>
+                  <span><i data-lucide="zap"></i> Самый популярный</span>
+              </div>
+              <a href="#contact" class="btn btn--primary btn--full">Начать обучение</a>
+          </div>
+
+          <div class="course-card fade-in">
+              <div class="course-card__level">Level: Expert</div>
+              <h3 class="course-card__title">Автоматизация и пассивный доход</h3>
+              <ul class="course-card__list">
+                  <li><i data-lucide="check-circle-2"></i> Настройка автономных ИИ-агентов</li>
+                  <li><i data-lucide="check-circle-2"></i> Разработка цифровых продуктов без кода</li>
+                  <li><i data-lucide="check-circle-2"></i> Стратегии монетизации во Франции</li>
+              </ul>
+              <div class="course-card__info">
+                  <span><i data-lucide="clock"></i> 6 недель</span>
+                  <span><i data-lucide="trophy"></i> Диплом международного образца</span>
+              </div>
+              <a href="#contact" class="btn btn--outline btn--full">Узнать детали</a>
+          </div>
+      </div>
+
+      <div class="learning__stats fade-in">
+          <div class="stat-item">
+              <span class="stat-item__num">98%</span>
+              <span class="stat-item__label">Успешных внедрений</span>
+          </div>
+          <div class="stat-item">
+              <span class="stat-item__num">15+</span>
+              <span class="stat-item__label">Практических кейсов</span>
+          </div>
+          <div class="stat-item">
+              <span class="stat-item__num">24/7</span>
+              <span class="stat-item__label">Поддержка кураторов</span>
           </div>
       </div>
   </div>
@@ -169,46 +281,46 @@
       <div class="blog__grid">
           <article class="blog-card fade-in">
               <div class="blog-card__image">
-                  <img src="img/placeholder.png" alt="AI Home">
+                  <img src="/img/one.jpg" alt="AI Home">
                   <span class="blog-card__tag">Быт</span>
               </div>
               <div class="blog-card__content">
                   <time class="blog-card__date">22 января, 2026</time>
                   <h3 class="blog-card__title">Как ИИ экономит 5 часов в неделю на домашних делах</h3>
                   <p class="blog-card__text">Пошаговый путь автоматизации рутины: от умных покупок до планирования семейного бюджета.</p>
-                  <a href="#" class="blog-card__link">Читать далее <i data-lucide="arrow-right"></i></a>
+                  <a href="#contact" class="blog-card__link">Читать далее <i data-lucide="arrow-right"></i></a>
               </div>
           </article>
 
           <article class="blog-card fade-in">
               <div class="blog-card__image">
-                  <img src="img/placeholder.png" alt="AI Work">
+                  <img src="/img/two.jpg" alt="AI Work">
                   <span class="blog-card__tag">Карьера</span>
               </div>
               <div class="blog-card__content">
                   <time class="blog-card__date">18 января, 2026</time>
                   <h3 class="blog-card__title">Постройте карьеру, которая работает на вас</h3>
                   <p class="blog-card__text">Топ-5 навыков работы с нейросетями, которые востребованы на рынке Франции и ЕС в 2026 году.</p>
-                  <a href="#" class="blog-card__link">Читать далее <i data-lucide="arrow-right"></i></a>
+                  <a href="#contact" class="blog-card__link">Читать далее <i data-lucide="arrow-right"></i></a>
               </div>
           </article>
 
           <article class="blog-card fade-in">
               <div class="blog-card__image">
-                  <img src="img/placeholder.png" alt="AI Money">
+                  <img src="/img/three.jpg" alt="AI Money">
                   <span class="blog-card__tag">Доход</span>
               </div>
               <div class="blog-card__content">
                   <time class="blog-card__date">10 января, 2026</time>
                   <h3 class="blog-card__title">Программа пассивного дохода на базе ИИ</h3>
                   <p class="blog-card__text">Реальные кейсы использования генеративных сетей для создания цифровых продуктов без опыта программирования.</p>
-                  <a href="#" class="blog-card__link">Читать далее <i data-lucide="arrow-right"></i></a>
+                  <a href="#contact" class="blog-card__link">Читать далее <i data-lucide="arrow-right"></i></a>
               </div>
           </article>
       </div>
 
       <div class="blog__footer fade-in">
-          <a href="#" class="btn btn--outline">Посмотреть все статьи</a>
+          <a href="#contact" class="btn btn--outline">Посмотреть все статьи</a>
       </div>
   </div>
 </section>

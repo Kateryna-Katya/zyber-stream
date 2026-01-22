@@ -1058,3 +1058,554 @@ img { max-width: 100%; height: auto; display: block; }
 .burger--active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 .no-scroll { overflow: hidden; }
+/* Mesh Background */
+.about {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.about__mesh-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mesh-spotlight {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  top: -1000px; /* Скрыто до движения */
+  left: -1000px;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+/* Glass Stack Visual */
+.about__container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.glass-stack {
+  position: relative;
+  height: 400px;
+}
+
+.glass-layer {
+  position: absolute;
+  width: 280px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.glass-layer__content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.glass-layer__content i {
+  color: var(--color-primary);
+}
+
+.layer-1 { top: 0; left: 0; z-index: 3; }
+.layer-2 { top: 120px; left: 60px; z-index: 2; opacity: 0.8; }
+.layer-3 { top: 240px; left: 120px; z-index: 1; opacity: 0.6; }
+
+.glass-stack:hover .glass-layer {
+  transform: translate(-10px, -10px);
+  opacity: 1;
+}
+
+/* Features List */
+.about__features {
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.feature-item__icon {
+  width: 28px;
+  height: 28px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-item__icon i { width: 16px; }
+
+.feature-item__text strong {
+  display: block;
+  font-family: var(--font-heading);
+  margin-bottom: 4px;
+}
+
+.feature-item__text p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 992px) {
+  .about__container { grid-template-columns: 1fr; gap: 60px; }
+  .glass-stack { height: 350px; max-width: 400px; margin: 0 auto; }
+}
+.learning {
+  background: #fff;
+}
+
+.learning__header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.learning__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+/* Карточка курса */
+.course-card {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.course-card--featured {
+  border-color: var(--color-primary);
+  background: var(--color-bg-alt);
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
+  position: relative;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow);
+}
+
+.course-card__level {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.course-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-bottom: 24px;
+  color: var(--color-text);
+}
+
+.course-card__list {
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.course-card__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.course-card__list i {
+  color: var(--color-secondary);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.course-card__info {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+  margin-bottom: 24px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.course-card__info span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Статистика внизу */
+.learning__stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item__num {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+
+.stat-item__label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Адаптив */
+@media (max-width: 1100px) {
+  .course-card--featured {
+      transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .learning__stats {
+      flex-direction: column;
+      gap: 40px;
+  }
+}
+.tools { background: var(--color-bg-alt); }
+
+.tools__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tool-card {
+    background: var(--color-bg);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow);
+    border-color: var(--color-primary);
+}
+
+.tool-card__icon {
+    width: 50px;
+    height: 50px;
+    background: #eff6ff;
+    color: var(--color-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.tool-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.tool-card__text {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.tool-card__footer {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 180px;
+  gap: 24px;
+}
+
+.bento-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  transform: translateY(-5px);
+}
+
+/* Эффект "сканирующей" линии при ховере */
+.bento-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  transition: 0.5s;
+}
+
+.bento-card:hover::after {
+  left: 100%;
+}
+
+/* Размеры карточек */
+.bento-card--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-card--medium {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bento-card--small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-card--wide {
+  grid-column: span 2;
+  grid-row: span 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Контент внутри */
+.bento-card__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.bento-card--wide .bento-card__icon { margin-bottom: 0; margin-right: 24px; }
+
+.bento-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.bento-card__text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+/* SVG Визуал для большой карточки */
+.bento-card__visual {
+  margin-top: 20px;
+}
+
+.path-anim {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawPath 3s infinite alternate ease-in-out;
+}
+
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Адаптив */
+@media (max-width: 992px) {
+  .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+  }
+  .bento-card--large, .bento-card--medium, .bento-card--wide {
+      grid-column: span 1;
+      grid-row: span 1;
+  }
+}
+/* Контейнер страницы контактов */
+.contact-full-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  background: var(--color-bg-alt); /* Светлый фон вокруг карточки */
+}
+
+.contact-card {
+  background: var(--color-primary); /* Тот самый цветной фон */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 40px 100px rgba(37, 99, 235, 0.15);
+}
+
+.contact-card__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* 2 колонки на десктопе */
+}
+
+/* Левая сторона */
+.contact-card__info {
+  padding: 80px;
+}
+
+.contact-card__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin: 24px 0;
+}
+
+.contact-card__text {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 48px;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.method-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.method-item:hover { transform: translateX(10px); }
+
+.method-item__icon {
+  width: 54px;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.method-item__data span {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+}
+
+.method-item__data strong {
+  font-size: 1.25rem;
+  font-family: var(--font-heading);
+}
+
+/* Правая сторона: Изображение */
+.contact-card__visual {
+  position: relative;
+  min-height: 400px;
+}
+
+.contact-card__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Адаптивность: МОБИЛЬНАЯ ВЕРСИЯ (Столбиком) */
+@media (max-width: 992px) {
+  .contact-card__grid {
+      grid-template-columns: 1fr; /* Переход в один столбец */
+  }
+
+  .contact-card__info {
+      padding: 60px 30px;
+      order: 2; /* Текст внизу */
+  }
+
+  .contact-card__visual {
+      height: 300px;
+      order: 1; /* Изображение вверху */
+  }
+
+  .contact-card__title {
+      font-size: 2rem;
+  }
+}
