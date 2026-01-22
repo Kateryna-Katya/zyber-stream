@@ -1,167 +1,201 @@
 /**
- * ZYBER-STREAM.BLOG — Full Production Script v2.0
- * Пошаговая реализация всех интерактивных функций
+ * ZYBER-STREAM.BLOG — Final Global Script v3.0
+ * Технологичный блог об ИИ (Франция / 2026)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // ==========================================
+    // 1. ИНИЦИАЛИЗАЦИЯ ИКОНОК (Lucide)
+    // ==========================================
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 
-  // 1. ИНИЦИАЛИЗАЦИЯ ИКОНОК (Lucide)
-  // Используем встроенную функцию библиотеки, подключенной через CDN
-  if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
-  }
+    // ==========================================
+    // 2. HEADER: СКРОЛЛ-ЭФФЕКТ
+    // ==========================================
+    const header = document.querySelector('.header');
+    const handleScroll = () => {
+        if (!header) return;
+        window.scrollY > 50 
+            ? header.classList.add('header--scrolled') 
+            : header.classList.remove('header--scrolled');
+    };
+    window.addEventListener('scroll', handleScroll);
 
-  // 2. HEADER: ИЗМЕНЕНИЕ ПРИ СКРОЛЛЕ
-  // Добавляет класс при прокрутке более 50px для эффекта "закрепленной шапки"
-  const header = document.querySelector('.header');
-  const updateHeader = () => {
-      if (header) {
-          window.scrollY > 50
-              ? header.classList.add('header--scrolled')
-              : header.classList.remove('header--scrolled');
-      }
-  };
-  window.addEventListener('scroll', updateHeader);
+    // ==========================================
+    // 3. НАВИГАЦИЯ: МОБИЛЬНОЕ МЕНЮ И ПЛАВНЫЙ СКРОЛЛ
+    // ==========================================
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  // 3. НАВИГАЦИЯ: МОБИЛЬНОЕ МЕНЮ И ПЛАВНЫЙ СКРОЛЛ
-  const burger = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobile-menu'); // Если используется оверлей
-  const nav = document.querySelector('.nav'); // Если используется переключение класса в шапке
+    const toggleMenu = () => {
+        if (burger) burger.classList.toggle('burger--active');
+        if (mobileMenu) mobileMenu.classList.toggle('mobile-menu--active');
+        document.body.classList.toggle('no-scroll');
+    };
 
-  const toggleMenu = () => {
-      if (burger) burger.classList.toggle('burger--active');
-      if (mobileMenu) mobileMenu.classList.toggle('mobile-menu--active');
-      if (nav) nav.classList.toggle('nav--active');
-      document.body.classList.toggle('no-scroll');
-  };
+    if (burger) burger.addEventListener('click', toggleMenu);
 
-  if (burger) burger.addEventListener('click', toggleMenu);
+    // Обработка всех ссылок с якорями
+    document.querySelectorAll('a[href*="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const url = new URL(this.href, window.location.origin);
+            
+            // Если мы на той же странице
+            if (url.pathname === window.location.pathname || url.pathname === '/' && window.location.pathname === '/index.html') {
+                const target = document.querySelector(url.hash);
+                if (target) {
+                    e.preventDefault();
+                    if (mobileMenu && mobileMenu.classList.contains('mobile-menu--active')) toggleMenu();
+                    
+                    const headerHeight = 80;
+                    window.scrollTo({
+                        top: target.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
 
-  // Обработка кликов по ссылкам (якоря и переходы)
-  document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
+    // ==========================================
+    // 4. ANIMATION: ПОЯВЛЕНИЕ (Intersection Observer)
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+            }
+        });
+    }, { threshold: 0.1 });
 
-          // Если ссылка — якорь на текущей странице
-          if (href && href.startsWith('#') && href !== '#') {
-              e.preventDefault();
-              const target = document.querySelector(href);
-              if (target) {
-                  // Закрываем мобильное меню если оно открыто
-                  if (nav && nav.classList.contains('nav--active')) toggleMenu();
+    document.querySelectorAll('.fade-in').forEach(el => revealObserver.observe(el));
 
-                  const headerHeight = 80;
-                  const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                  window.scrollTo({ top: targetPos, behavior: 'smooth' });
-              }
-          }
-      });
-  });
+    // ==========================================
+    // 5. PRACTICES: SPOTLIGHT (Mesh Grid)
+    // ==========================================
+    const meshSection = document.getElementById('practices');
+    const spotlight = document.getElementById('mesh-spotlight');
 
-  // 4. ANIMATION: ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ (Intersection Observer)
-  // Используем для всех элементов с классом .fade-in
-  const revealOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-  const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('appear');
-          }
-      });
-  }, revealOptions);
+    if (meshSection && spotlight) {
+        meshSection.addEventListener('mousemove', (e) => {
+            const rect = meshSection.getBoundingClientRect();
+            spotlight.style.left = `${e.clientX - rect.left}px`;
+            spotlight.style.top = `${e.clientY - rect.top}px`;
+            spotlight.style.opacity = '1';
+        });
+        meshSection.addEventListener('mouseleave', () => spotlight.style.opacity = '0');
+    }
 
-  document.querySelectorAll('.fade-in').forEach(el => revealObserver.observe(el));
+    // ==========================================
+    // 6. BENEFITS: BENTO TILT EFFECT
+    // ==========================================
+    const bentoLarge = document.querySelector('.bento-card--large');
+    if (bentoLarge) {
+        bentoLarge.addEventListener('mousemove', (e) => {
+            const rect = bentoLarge.getBoundingClientRect();
+            const x = (e.clientX - rect.left) - (rect.width / 2);
+            const y = (e.clientY - rect.top) - (rect.height / 2);
+            
+            bentoLarge.style.transform = `perspective(1000px) rotateX(${-y / 20}deg) rotateY(${x / 20}deg) translateY(-5px)`;
+        });
+        bentoLarge.addEventListener('mouseleave', () => {
+            bentoLarge.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+        });
+    }
 
-  // 5. SECTION PRACTICES: МЕШ-СПОТЛАЙТ (Spotlight)
-  const meshSection = document.getElementById('practices');
-  const spotlight = document.getElementById('mesh-spotlight');
+    // ==========================================
+    // 7. INNOVATIONS: PATH PROGRESS
+    // ==========================================
+    const progressLine = document.querySelector('.innovation-path__progress');
+    const pathSteps = document.querySelectorAll('.path-step');
 
-  if (meshSection && spotlight) {
-      meshSection.addEventListener('mousemove', (e) => {
-          const rect = meshSection.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
+    const updatePath = () => {
+        const pathSection = document.querySelector('.innovation-path');
+        if (!pathSection || !progressLine) return;
 
-          spotlight.style.left = `${x}px`;
-          spotlight.style.top = `${y}px`;
-          spotlight.style.opacity = '1';
-      });
+        const rect = pathSection.getBoundingClientRect();
+        const scrollOffset = window.innerHeight / 1.5;
+        let progress = ((scrollOffset - rect.top) / pathSection.offsetHeight) * 100;
+        
+        progressLine.style.height = `${Math.max(0, Math.min(100, progress))}%`;
 
-      meshSection.addEventListener('mouseleave', () => {
-          spotlight.style.opacity = '0';
-      });
-  }
+        pathSteps.forEach(step => {
+            step.getBoundingClientRect().top < scrollOffset 
+                ? step.classList.add('is-active') 
+                : step.classList.remove('is-active');
+        });
+    };
+    window.addEventListener('scroll', updatePath);
 
-  // 6. SECTION BENEFITS: TILT ЭФФЕКТ (Bento Grid)
-  const bentoLarge = document.querySelector('.bento-card--large');
-  if (bentoLarge) {
-      bentoLarge.addEventListener('mousemove', (e) => {
-          const rect = bentoLarge.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
+    // ==========================================
+    // 8. FORM & CAPTCHA: ИСПРАВЛЕННАЯ ЛОГИКА
+    // ==========================================
+    const contactForm = document.getElementById('contact-form');
+    const captchaLabel = document.getElementById('captcha-question');
+    const captchaInput = document.getElementById('user-captcha');
+    const successBox = document.getElementById('success-message');
+    const phoneInput = document.getElementById('user-phone');
+    
+    let correctResult = 0;
 
-          const rotateX = (y - centerY) / 20;
-          const rotateY = (centerX - x) / 20;
+    const initCaptcha = () => {
+        if (!captchaLabel) return;
+        const n1 = Math.floor(Math.random() * 9) + 1;
+        const n2 = Math.floor(Math.random() * 9) + 1;
+        correctResult = n1 + n2;
+        captchaLabel.innerText = `${n1} + ${n2} = ?`;
+        if (captchaInput) captchaInput.value = '';
+    };
 
-          bentoLarge.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-      });
+    initCaptcha();
 
-      bentoLarge.addEventListener('mouseleave', () => {
-          bentoLarge.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
-      });
-  }
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+    }
 
-  // 7. SECTION INNOVATIONS: ВЕРТИКАЛЬНЫЙ ПРОГРЕСС-БАР
-  const progressLine = document.querySelector('.innovation-path__progress');
-  const pathSteps = document.querySelectorAll('.path-step');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const userAns = parseInt(captchaInput.value, 10);
 
-  const updatePath = () => {
-      const pathSection = document.querySelector('.innovation-path');
-      if (!pathSection || !progressLine) return;
+            if (userAns !== correctResult) {
+                alert('Неверный ответ капчи! Попробуйте снова.');
+                initCaptcha();
+                return;
+            }
 
-      const rect = pathSection.getBoundingClientRect();
-      const scrollPoint = window.innerHeight / 1.5;
+            const btn = contactForm.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerText = 'Отправка...';
 
-      let progress = ((scrollPoint - rect.top) / pathSection.offsetHeight) * 100;
-      progressLine.style.height = `${Math.max(0, Math.min(100, progress))}%`;
+            setTimeout(() => {
+                contactForm.style.display = 'none';
+                if (successBox) successBox.style.display = 'flex';
+                btn.disabled = false;
+                btn.innerText = 'Отправить запрос';
+            }, 1500);
+        });
+    }
 
-      pathSteps.forEach(step => {
-          if (step.getBoundingClientRect().top < scrollPoint) {
-              step.classList.add('is-active');
-          } else {
-              step.classList.remove('is-active');
-          }
-      });
-  };
-  window.addEventListener('scroll', updatePath);
+    // ==========================================
+    // 9. COOKIE POPUP
+    // ==========================================
+    const cookiePopup = document.getElementById('cookie-popup');
+    if (cookiePopup && !localStorage.getItem('zyber_cookies_accepted')) {
+        setTimeout(() => cookiePopup.classList.add('cookie-popup--active'), 3000);
+        document.getElementById('cookie-accept')?.addEventListener('click', () => {
+            localStorage.setItem('zyber_cookies_accepted', 'true');
+            cookiePopup.classList.remove('cookie-popup--active');
+        });
+    }
 
-  // 8. COOKIE POPUP
-  const cookiePopup = document.getElementById('cookie-popup');
-  const cookieBtn = document.getElementById('cookie-accept');
-
-  if (cookiePopup && !localStorage.getItem('zyber_cookies_accepted')) {
-      setTimeout(() => {
-          cookiePopup.classList.add('cookie-popup--active');
-      }, 3000);
-  }
-
-  if (cookieBtn) {
-      cookieBtn.addEventListener('click', () => {
-          localStorage.setItem('zyber_cookies_accepted', 'true');
-          cookiePopup.classList.remove('cookie-popup--active');
-      });
-  }
-
-  // 9. ВАЛИДАЦИЯ ТЕЛЕФОНА (ДЛЯ ФОРМ, ЕСЛИ ОНИ ЕСТЬ)
-  const phoneFields = document.querySelectorAll('input[type="tel"]');
-  phoneFields.forEach(field => {
-      field.addEventListener('input', (e) => {
-          e.target.value = e.target.value.replace(/[^0-9]/g, '');
-      });
-  });
-
-  // Первичный запуск функций скролла
-  updateHeader();
-  updatePath();
+    // Первичный запуск
+    handleScroll();
+    updatePath();
 });
