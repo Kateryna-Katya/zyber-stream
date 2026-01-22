@@ -5,29 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page 2</title>
-    <link rel="stylesheet" crossorigin href="/test-two/assets/styles-guStct1H.css">
+    <link rel="stylesheet" crossorigin href="/zyber-stream/assets/styles-D_Mx09kS.css">
   </head>
   <body>
     <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
+  <div class="container header__container">
+      <a href="/" class="logo">
+          <span class="logo__text">Zyber-Stream</span>
       </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
+
+      <nav class="nav" id="main-nav">
+          <ul class="nav__list">
+              <li><a href="#home" class="nav__link">Главная</a></li>
+              <li><a href="#practices" class="nav__link">Практики</a></li>
+              <li><a href="#tools" class="nav__link">Инструменты</a></li>
+              <li><a href="#learning" class="nav__link">Обучение</a></li>
+              <li><a href="#benefits" class="nav__link">Преимущества</a></li>
+              <li><a href="#blog" class="nav__link">Блог</a></li>
+          </ul>
+      </nav>
+
+      <div class="header__actions">
+          <a href="#contact" class="btn btn--primary">Начать</a>
+          <button class="burger" id="burger" aria-label="Menu">
+              <span></span>
+          </button>
+      </div>
   </div>
 </header>
-
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu__content">
+      <ul class="mobile-menu__list">
+          <li><a href="#home">Главная</a></li>
+          <li><a href="#practices">Практики</a></li>
+          <li><a href="#tools">Инструменты</a></li>
+          <li><a href="#learning">Обучение</a></li>
+          <li><a href="#benefits">Преимущества</a></li>
+          <li><a href="#blog">Блог</a></li>
+          <li><a href="#contact" class="btn btn--primary">Начать сейчас</a></li>
+      </ul>
+  </div>
+</div>
 
     <main>
       <div class="container">
@@ -38,20 +56,52 @@
     </main>
 
     <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
+  <div class="container footer__grid">
+      <div class="footer__col">
+          <a href="/" class="logo logo--footer">Zyber-Stream</a>
+          <p class="footer__description">Технологии, которые работают на вас. Платформа года для изучения ИИ-инструментов в повседневной жизни.</p>
+          <div class="footer__contacts">
+              <a href="tel:+33142212500" class="footer__contact-item">
+                  <i data-lucide="phone"></i> +33189480058
+              </a>
+              <a href="mailto:hello@zyber-stream.blog" class="footer__contact-item">
+                  <i data-lucide="mail"></i> hello@zyber-stream.blog
+              </a>
+              <address class="footer__contact-item">
+                  <i data-lucide="map-pin"></i> 25 Rue de Rivoli, 75004 Paris, France
+              </address>
+          </div>
+      </div>
+
+      <div class="footer__col">
+          <h4 class="footer__title">Навигация</h4>
+          <ul class="footer__links">
+              <li><a href="#home">Главная</a></li>
+              <li><a href="#practices">Практики</a></li>
+              <li><a href="#tools">Инструменты</a></li>
+              <li><a href="#learning">Обучение</a></li>
+              <li><a href="#blog">Блог</a></li>
+          </ul>
+      </div>
+
+      <div class="footer__col">
+          <h4 class="footer__title">Юридическая информация</h4>
+          <ul class="footer__links">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="cookies.html">Cookie Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="return.html">Return Policy</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="personal-data-policy.html">Personal Data</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="footer__bottom">
+      <div class="container">
+          <p>&copy; 2026 Zyber-Stream. Платформа уже доступна в Европе.</p>
+      </div>
   </div>
 </footer>
-
   </body>
 </html>
